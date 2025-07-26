@@ -1,0 +1,36 @@
+{
+  "extends": "nx/presets/npm.json",
+  "npmScope": "nestjs-rabbitmq",
+  "useInferencePlugins": true,
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nx/nestjs-rabbitmq/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "serve"]
+      }
+    }
+  },
+  "targetDefaults": {},
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
+      }
+    }
+  ]
+}
